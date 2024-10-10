@@ -1,0 +1,296 @@
+//configuração containers na tela
+
+.layout-menu{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 20px;
+    width: 90%;
+    height: 50px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    border-radius: 6px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.btn-menu{
+    border: none;
+    background-color: #fff;
+}
+.menu-list{
+    background-color: #fff;
+}
+.cetral-body{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+.container {
+    width: 80%;
+    padding: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os itens que não cabem na linha se movam para a próxima linha */
+    justify-content: space-between;
+    /* Distribui o espaço entre os itens */
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container-card {
+    display: flex;
+    width: 48%;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-custom{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 6px;
+    gap: 10px;
+    margin-top: 16px;
+}
+.card-custom{
+    width: 24%;
+    padding: 9px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.container-grafico{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px;
+    margin-top: 16px;
+    width: 80%;
+    background: #ffffff;
+    border-radius: 8px;
+    max-height: 264px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.grafico {
+    width: 100% !important;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .container-card {
+        width: 100%;
+        /* Em telas menores, cada container-card ocupa toda a largura */
+    }
+    .card-custom{
+        width: 100% !important;
+    }
+    .container-grafico{
+        width: 100% !important;
+         
+    }
+    .container-custom{
+        width: 100% !important;
+    } 
+    
+}
+@media (max-width: 900px) {
+    .container{
+        width: 100%;
+    }
+    .card-custom{
+        width: 48%;
+    }
+    .container-grafico{
+        width: 93%;
+    }
+    .container-custom{
+        width: 93%;
+    }
+    .layout-menu{
+        width: 100%;
+    }
+}
+
+mat-card {
+    width: 100%;
+    background-color: #ffffff;
+    border: none;
+    color: #474747;
+}
+
+.cabecalho-image {
+    background-image: src("assets/img/ressaquinha.jpg");
+    background-size: cover;
+    max-width: 58px;
+    align-items: baseline;
+    border-radius: 5px;
+    display: flex;
+    width: 100%;
+}
+
+.img-custom {
+    width: 100%;
+}
+.card-subtitle{
+    font-size: 14px;
+}
+.card-title{
+    font-size: 15px;
+}
+.button-card{
+    width: 100%;
+    color: #4c4747;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    background: #ffffff;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+//customização do rating
+::ng-deep .p-rating .p-rating-icon {
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* Transição suave para cor e transform */
+}
+
+::ng-deep .p-rating .p-rating-item.p-rating-item-active .p-rating-icon {
+    color: #ffd700;
+    /* Cor dourada quando a estrela é preenchida */
+    transform: scale(1.2);
+    /* Aumenta o tamanho da estrela preenchida */
+}
+
+::ng-deep .p-rating .p-rating-icon.p-empty {
+    color: #cccccc;
+    /* Cor cinza para a estrela vazia */
+    transform: scale(1);
+    /* Normaliza o tamanho da estrela vazia */
+}
+
+.circle-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    justify-content: center
+}
+
+.circle-background {
+    fill: none;
+    stroke: #f0f0f0;
+    stroke-width: 5;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: #4caf50;
+    stroke-width: 5;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 1s ease;
+    align-items: center;
+}
+
+.rating-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.bar-value {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: right;
+}
+
+.rating-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    justify-content: flex-start;
+    /* Alinha ao início */
+    width: 100%;
+    /* Garantir que o contêiner use 100% da largura */
+    flex-wrap: wrap;
+    /* Permite que os itens se movam para uma nova linha quando necessário */
+}
+
+/* Contêiner da barra de fundo */
+.bar-container {
+    background-color: #e0e0e0;
+    /* Cor de fundo da barra */
+    height: 12px;
+    /* Altura da barra */
+    border-radius: 5px;
+    position: relative;
+    flex-grow: 1;
+    /* Faz com que a barra ocupe todo o espaço restante */
+    overflow: hidden;
+    /* Garante que a barra não transborde */
+    width: 100%;
+}
+
+/* A barra de progresso (cor preenchida) */
+.bar {
+    background-color: #4caf50;
+    /* Cor da barra (verde) */
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+    /* Animação suave */
+}
+
+/* Exibição do valor médio e votos ao lado da barra */
+.rating-bar span {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    /* Evita que o texto se quebre em várias linhas */
+    overflow: hidden;
+    /* Evita que o texto ultrapasse a área disponível */
+    text-overflow: ellipsis;
+    /* Adiciona '...' se o texto for longo demais */
+}
+
+/* Estilo do nome da categoria de rating */
+.rating-bar label {
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+    font-size: 14px;
+    flex-shrink: 0;
+    /* Impede que o nome da categoria encolha */
+    white-space: nowrap;
+    /* Impede que o nome quebre em várias linhas */
+}
+.rating-votes {
+    display: flex;
+    justify-content: center;
+    font-size: 0.9em;
+    color: #777;
+    margin: 0;
+  }
+.rating-info {
+    text-align: center;
+    width: 100%;
+  }
+.rating-container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+.rating-distribution {
+    margin-top: 20px;
+    width: 100%;
+  }

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { DashboardComponent } from './features/home/components/dashboard/dashboard.component';
+import { MenubarModule } from 'primeng/menubar';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  imports: [RouterModule, RouterOutlet, DashboardComponent, MenubarModule]
 })
 export class AppComponent {
   title = 'TCC-BETA';

@@ -1,10 +1,29 @@
 <div class="layout-menu">
     <button class="btn-menu" (click)="toggleVisibility()">
-        <img class="menu" src="assets/icons/menu.svg" alt="Ressaca"> 
+        <img class="menu" [src]="getIcon()" alt="Ressaca"> 
     </button>
-    <div class="menu-list" *ngIf="isVisible">
-        <p>Esta mensagem aparece quando o botão é clicado!</p>
-    </div>
+</div>
+<div class="menu-list" *ngIf="isVisible">
+    <button class="btn-menu-itens">
+        <img class="menu" src="assets/icons/home.svg" alt="Ressaca"> 
+        <span>Home</span>
+    </button>
+    <button class="btn-menu-itens">
+        <img class="menu" src="assets/icons/home.svg" alt="Ressaca"> 
+        <span>Saúde</span>
+    </button>
+    <button class="btn-menu-itens">
+        <img class="menu" src="assets/icons/home.svg" alt="Ressaca"> 
+        <span>Segurança</span>
+    </button>
+    <button class="btn-menu-itens">
+        <img class="menu" src="assets/icons/home.svg" alt="Ressaca"> 
+        <span>Educação</span>
+    </button>
+    <button class="btn-menu-itens">
+        <img class="menu" src="assets/icons/home.svg" alt="Ressaca"> 
+        <span>Infraestrutura</span>
+    </button>
 </div>
 
 <div class="container">
@@ -67,9 +86,9 @@
             </mat-card-header>
             <br>
             <mat-card-content>
-                <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false" [stars]="5">
+                <p-rating [(ngModel)]="value1" [readonly]="true" [cancel]="false" [stars]="5">
                 </p-rating>
-                <div class="rating-value">{{ value | number: '1.1-1' }}/5</div>
+                <div class="rating-value">{{ value1 | number: '1.1-1' }}/5</div>
             </mat-card-content>
             <mat-card-actions>
                 <button class="button-card">Ver mais detalhes
@@ -88,9 +107,9 @@
             </mat-card-header>
             <br>
             <mat-card-content>
-                <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false" [stars]="5">
+                <p-rating [(ngModel)]="value2" [readonly]="true" [cancel]="false" [stars]="5">
                 </p-rating>
-                <div class="rating-value">{{ value | number: '1.1-1' }}/5</div>
+                <div class="rating-value">{{ value2 | number: '1.1-1' }}/5</div>
             </mat-card-content>
             <mat-card-actions>
                 <button class="button-card">Ver mais detalhes
@@ -109,9 +128,9 @@
             </mat-card-header>
             <br>
             <mat-card-content>
-                <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false" [stars]="5">
+                <p-rating [(ngModel)]="value3" [readonly]="true" [cancel]="false" [stars]="5">
                 </p-rating>
-                <div class="rating-value">{{ value | number: '1.1-1' }}/5</div>
+                <div class="rating-value">{{ value3 | number: '1.1-1' }}/5</div>
             </mat-card-content>
             <mat-card-actions>
                 <button class="button-card">Ver mais detalhes
@@ -130,9 +149,9 @@
             </mat-card-header>
             <br>
             <mat-card-content>
-                <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false" [stars]="5">
+                <p-rating [(ngModel)]="value4" [readonly]="true" [cancel]="false" [stars]="5">
                 </p-rating>
-                <div class="rating-value">{{ value | number: '1.1-1' }}/5</div>
+                <div class="rating-value">{{ value4 | number: '1.1-1' }}/5</div>
             </mat-card-content>
             <mat-card-actions>
                 <button class="button-card">Ver mais detalhes

@@ -38,7 +38,11 @@ import { NgChartsModule } from 'ng2-charts';
 })
 export class DashboardComponent {
   items: MenuItem[] | undefined;
-  value = 4.3;
+  value = 1.4;
+  value1 = 0.2;
+  value2 = 2.5;
+  value3 = 1.0;
+  value4 = 2.0;
   totalVotes = 1000;
   isBrowser: boolean = false;
   activeItem!: null;
@@ -47,14 +51,16 @@ export class DashboardComponent {
   toggleVisibility() {
     this.isVisible = !this.isVisible;  // Alterna a visibilidade
   }
+  getIcon() {
+    return this.isVisible ? 'assets/icons/close.svg' : 'assets/icons/menu.svg';
+  }
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   ratings = [
-    { category: 'Qualidade', average: 4.2 },
-    { category: 'Atendimento', average: 3.8 },
-    { category: 'Preço', average: 4.5 },
-    { category: 'Facilidade de uso', average: 4.0 },
-    { category: 'Entrega', average: 4.7 }
+    { category: 'Saude', average: 0.2 },
+    { category: 'Educação', average: 2.5 },
+    { category: 'Infraestrutura', average: 1.0 },
+    { category: 'Segurança', average: 2.0 },
   ];
 
   generalAverage: number = this.calculateGeneralAverage();
@@ -79,55 +85,7 @@ export class DashboardComponent {
     this.updateChartOptions();
 
     this.initChart();
-    this.items = [
-      {
-        label: 'Home',
-        icon: 'pi pi-home',
-        command: () => this.activeItem = null,
-      },
-      {
-        label: 'Features',
-        icon: 'pi pi-star'
-      },
-      {
-        label: 'Projects',
-        icon: 'pi pi-search',
-        items: [
-          {
-            label: 'Components',
-            icon: 'pi pi-bolt'
-          },
-          {
-            label: 'Blocks',
-            icon: 'pi pi-server'
-          },
-          {
-            label: 'UI Kit',
-            icon: 'pi pi-pencil'
-          },
-          {
-            label: 'Templates',
-            icon: 'pi pi-palette',
-            items: [
-              {
-                label: 'Apollo',
-                icon: 'pi pi-palette'
-              },
-              {
-                label: 'Ultima',
-                icon: 'pi pi-palette'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        label: 'Contact',
-        icon: 'pi pi-envelope'
-      }
-    ]
   }
-
   initChart() {
     this.data = {
       labels: ['Media da avaliação dos serviços prestados'],
@@ -139,39 +97,33 @@ export class DashboardComponent {
           borderWidth: 2,
           fill: false,
           tension: 0.4,
-          data: [2.0, 3.8, 5.0, 2.0, 3.1]
+          data: [4.1, 3.0, 5.0, 1.6, 3.3, 1.4]
 
         },
         {
           type: 'bar',
-          label: 'Facilidade de uso',
+          label: 'Saude',
           backgroundColor: "rgba(138, 43, 226, 0.5)",
-          data: [4.0, 1.9, 5.0, 2.1]
+          data: [4.0, 1.9, 5.0, 2.1, 3.0, 0.20]
         },
         {
           type: 'bar',
-          label: 'Atendimento',
-          backgroundColor: "rgba(0, 255, 0, 0.5)",
-          data: [3.8, 2.9, 5.0, 1.5]
-        },
-        {
-          type: 'bar',
-          label: 'Preço',
-          backgroundColor: "rgba(255, 165, 0, 0.5)",
-          data: [4.5, 3.5, 5.0, 2.0]
-        },
-        {
-          type: 'bar',
-          label: 'Qualidade',
+          label: 'Segurança',
           backgroundColor: "rgba(0, 0, 255, 0.5)",
-          data: [4.2, 3.9, 5.0, 1.0],
+          data: [4.2, 3.9, 5.0, 1.0, 4.1, 2.5],
         },
         {
           type: 'bar',
-          label: 'Entrega',
-          backgroundColor: "rgba(255, 192, 203, 0.5)",
-          data: [4.7, 4.9, 5.0, 3.0]
-        }
+          label: 'Educação',
+          backgroundColor: "rgba(0, 255, 0, 0.5)",
+          data: [3.8, 2.9, 5.0, 1.5, 3.5, 1.0]
+        },
+        {
+          type: 'bar',
+          label: 'Infraestrutura',
+          backgroundColor: "rgba(255, 165, 0, 0.5)",
+          data: [4.5, 3.5, 5.0, 2.0, 2.9, 2.0]
+        },
       ]
     };
   }
@@ -282,7 +234,7 @@ export class DashboardComponent {
       scales: {
         x: {
           type: 'category',
-          labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
+          labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
           ticks: {
             color: "rgba(130, 130, 130, 0.9)",
           },

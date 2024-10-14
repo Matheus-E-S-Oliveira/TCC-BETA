@@ -1,31 +1,3 @@
-<div class="layout-menu">
-    <button class="btn-menu" (click)="toggleVisibility()">
-        <img class="menu" [src]="getIcon()" alt="Ressaca"> 
-    </button>
-</div>
-<div class="menu-list" *ngIf="isVisible">
-    <button class="btn-menu-itens">
-        <img class="menu" src="assets/icons/home.svg" alt="Ressaca"> 
-        <span>Home</span>
-    </button>
-    <button class="btn-menu-itens">
-        <img class="menu" src="assets/icons/home.svg" alt="Ressaca"> 
-        <span>Saúde</span>
-    </button>
-    <button class="btn-menu-itens">
-        <img class="menu" src="assets/icons/home.svg" alt="Ressaca"> 
-        <span>Segurança</span>
-    </button>
-    <button class="btn-menu-itens">
-        <img class="menu" src="assets/icons/home.svg" alt="Ressaca"> 
-        <span>Educação</span>
-    </button>
-    <button class="btn-menu-itens">
-        <img class="menu" src="assets/icons/home.svg" alt="Ressaca"> 
-        <span>Infraestrutura</span>
-    </button>
-</div>
-
 <div class="container">
     <div class="container-card">
         <mat-card>
@@ -71,9 +43,16 @@
         </div>
     </div>
 </div>
-
-<div class="container-grafico">
-    <p-chart class="grafico" type="line" [data]="data" [options]="options"></p-chart>
+<div class="btn-calendario-container"> 
+    <button class="btn-grafico-ant" (click)="prevMonth()">
+        <img class="menu" src="assets/icons/arrow_back.svg">
+    </button>
+    <div class="container-grafico">
+        <p-chart class="grafico" type="bar" [data]="data" [options]="options"></p-chart>
+    </div>
+    <button class="btn-grafico-prox" (click)="nextMonth()">
+        <img class="menu" src="assets/icons/arrow_forward.svg">
+    </button>
 </div>
 <div class="container-custom">
     <div class="card-custom">

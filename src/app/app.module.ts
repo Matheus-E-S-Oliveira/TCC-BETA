@@ -10,12 +10,14 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { PrimeNGConfig } from 'primeng/api';
 import { RatingModule } from 'primeng/rating';
 import { NgChartsModule } from 'ng2-charts'; 
+import { LayoutModule } from './shared/theme/module/layout.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,9 @@ import { NgChartsModule } from 'ng2-charts';
     TabMenuModule,
     RatingModule,
     PrimeNGConfig,
-    NgChartsModule
+    NgChartsModule,
+    LayoutModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

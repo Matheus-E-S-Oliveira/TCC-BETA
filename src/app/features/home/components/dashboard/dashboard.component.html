@@ -1,143 +1,27 @@
-<div class="container">
-    <div class="container-card">
-        <mat-card>
-            <mat-card-header>
-                <div mat-card-avatar class="cabecalho-image">
-                    <img class="cabecalho-image" src="assets/img/bandeira.jpg" alt="Ressaca">
-                </div>
-                <mat-card-title style="text-align: left; font-size: 15px;">Ressaquinha MG</mat-card-title>
-                <mat-card-subtitle style="text-align: left; font-size: 13px;">Avaliação Geral dos serviços
-                    prestados</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <img class="img-custom" src="assets/img/ressaquinha.jpg" alt="Ressaca" />
-            </mat-card-content>
-            <mat-card-actions>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <div class="container-card">
-        <div class="rating-container">
-            <div class="circle-container">
-                <svg width="100" height="100" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" class="circle-background"></circle>
-                    <circle cx="50" cy="50" r="45" class="circle-progress" [attr.stroke-dasharray]="circumference"
-                        [attr.stroke-dashoffset]="offset"></circle>
-                </svg>
-                <div class="rating-value">{{ value | number: '1.1-1' }}/5</div>
+<div class="body">
+    <div class="container">
+        <div class="container-grafico-doun">
+            <div class="grafico-doun">
+                <p-chart type="doughnut" [data]="data1" [options]="options1"></p-chart>
             </div>
-            <div class="rating-info">
-                <p class="rating-votes">{{ totalVotes }} Avalições</p>
-                <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false" [stars]="5"></p-rating>
+        </div>
+        <div class="card">
+            <div class="text-caixa">
+                <span class="text-title">Caixas digitalizadas:</span>
+                <span class="text-content">Média total de itens digitalizados: 31.257 itens</span>
+                <span class="text-content">Média total de arquivos digitalizados: 389.712 arquivos</span>
             </div>
-            <div class="rating-distribution">
-                <div class="rating-bar" *ngFor="let rating of ratings; let i = index">
-                    <label>{{ rating.category }}</label>
-                    <div class="bar-value">{{ rating.average | number: '1.1-1' }}</div>
-                    <div class="bar-container">
-                        <div class="bar" [style.width]="(rating.average / 5) * 100 + '%'">
-                        </div>
-                    </div>
-                </div>
+            <div class="text-livro">
+                <span class="text-title">Livros digitalizadas:</span>
+                <span class="text-content">Média total de itens digitalizados: 2.612 itens</span>
+                <span class="text-content">Média total de páginas digitalizadas: 26.125 páginas</span>
             </div>
         </div>
     </div>
-</div>
-<div class="btn-calendario-container"> 
-    <button class="btn-grafico-ant" (click)="prevMonth()">
-        <img class="menu" src="assets/icons/arrow_back.svg">
-    </button>
-    <div class="container-grafico">
-        <p-chart class="grafico" type="bar" [data]="data" [options]="options"></p-chart>
-    </div>
-    <button class="btn-grafico-prox" (click)="nextMonth()">
-        <img class="menu" src="assets/icons/arrow_forward.svg">
-    </button>
-</div>
-<div class="container-custom">
-    <div class="card-custom">
-        <mat-card>
-            <mat-card-header>
-                <div mat-card-avatar class="cabecalho-image">
-                    <img class="cabecalho-image" src="assets/img/bandeira.jpg" alt="Ressaca">
-                </div>
-                <mat-card-title class="card-title">Avaliação dos serviços prestados na Saúde</mat-card-title>
-            </mat-card-header>
-            <br>
-            <mat-card-content>
-                <p-rating [(ngModel)]="value1" [readonly]="true" [cancel]="false" [stars]="5">
-                </p-rating>
-                <div class="rating-value">{{ value1 | number: '1.1-1' }}/5</div>
-            </mat-card-content>
-            <mat-card-actions>
-                <button class="button-card">Ver mais detalhes
-                    <mat-icon>open_in_new</mat-icon>
-                </button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <div class="card-custom">
-        <mat-card>
-            <mat-card-header>
-                <div mat-card-avatar class="cabecalho-image">
-                    <img class="cabecalho-image" src="assets/img/bandeira.jpg" alt="Ressaca">
-                </div>
-                <mat-card-title class="card-title">Avaliação dos serviços prestados em Infraestrutura</mat-card-title>
-            </mat-card-header>
-            <br>
-            <mat-card-content>
-                <p-rating [(ngModel)]="value2" [readonly]="true" [cancel]="false" [stars]="5">
-                </p-rating>
-                <div class="rating-value">{{ value2 | number: '1.1-1' }}/5</div>
-            </mat-card-content>
-            <mat-card-actions>
-                <button class="button-card">Ver mais detalhes
-                    <mat-icon>open_in_new</mat-icon>
-                </button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <div class="card-custom">
-        <mat-card>
-            <mat-card-header>
-                <div mat-card-avatar class="cabecalho-image">
-                    <img class="cabecalho-image" src="assets/img/bandeira.jpg" alt="Ressaca">
-                </div>
-                <mat-card-title class="card-title">Avaliação dos serviços prestados na Educação</mat-card-title>
-            </mat-card-header>
-            <br>
-            <mat-card-content>
-                <p-rating [(ngModel)]="value3" [readonly]="true" [cancel]="false" [stars]="5">
-                </p-rating>
-                <div class="rating-value">{{ value3 | number: '1.1-1' }}/5</div>
-            </mat-card-content>
-            <mat-card-actions>
-                <button class="button-card">Ver mais detalhes
-                    <mat-icon>open_in_new</mat-icon>
-                </button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <div class="card-custom">
-        <mat-card>
-            <mat-card-header>
-                <div mat-card-avatar class="cabecalho-image">
-                    <img class="cabecalho-image" src="assets/img/bandeira.jpg" alt="Ressaca">
-                </div>
-                <mat-card-title class="card-title">Avaliação nos serviços prestados em Segurança</mat-card-title>
-            </mat-card-header>
-            <br>
-            <mat-card-content>
-                <p-rating [(ngModel)]="value4" [readonly]="true" [cancel]="false" [stars]="5">
-                </p-rating>
-                <div class="rating-value">{{ value4 | number: '1.1-1' }}/5</div>
-            </mat-card-content>
-            <mat-card-actions>
-                <button class="button-card">Ver mais detalhes
-                    <mat-icon>open_in_new</mat-icon>
-                </button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-</div>
 
+    <div class="container-grafico">
+        <div class="container-grafico-bar">
+            <p-chart class="grafico" type="bar" [data]="data" [options]="options"></p-chart>
+        </div>
+    </div>
+</div>

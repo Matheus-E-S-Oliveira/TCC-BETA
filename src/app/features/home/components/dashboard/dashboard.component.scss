@@ -1,377 +1,93 @@
-//configuração containers na tela
-
-.cetral-body {
+.body {
     display: flex;
-    justify-content: center;
-    text-align: center;
     flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-grafico-doun {
+    width: 35%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.container-grafico {
+    padding: 20px;
+    width: 80%;
+    background: #ffffff;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.container-grafico-bar {
+    margin-top: 5px;
+    width: 100%;
+}
+
+.grafico-doun {
+    width: 100%;
+    margin-right: 20px;
+
+}
+
+.text-caixa {
+    margin-bottom: 20px;
+}
+
+.text-caixa,
+.text-livro {
+    width: 99%;
+    margin-left: 10px;
+    background-color: #ffffff;
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.text-title{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(130, 130, 130);
+    font-family: sans-serif;
+}
+.text-content{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3px;
+    color: rgba(130, 130, 130, 1);
+    font-size: 16px;
+    font-weight: 500;
+}
+span {
+    width: 100%;
+}
+
+.card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: none;
+    border: none;
+    margin-left: 20px;
 }
 
 .container {
     width: 80%;
-    padding: 26px;
     display: flex;
-    flex-wrap: wrap;
-    /* Permite que os itens que não cabem na linha se movam para a próxima linha */
-    justify-content: space-between;
-    /* Distribui o espaço entre os itens */
-    background: #ffffff;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 40px;
-}
-
-.container-card {
-    display: flex;
-    width: 48%;
-    margin-bottom: 12px;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: center;
-}
-
-.container-custom {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border-radius: 6px;
-    gap: 10px;
-}
-
-.card-custom {
-    width: 24%;
-    padding: 9px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 16px;
-}
-
-.container-grafico {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0px;
-    margin-top: 5px;
-    width: 100%;
-    background: #ffffff;
-    border-radius: 8px;
-    max-height: 264px;
-    // box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
-}
-
-.grafico {
-    width: 100% !important;
-}
-
-.btn-calendario-container {
-    width: 80%;
-    background-color: #fff;
-    margin-bottom: 70px;
-    margin-top: 45px;
-    border-radius: 10px;
-    display: flex;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn-grafico-ant {
-    border-radius: 8px;
-    /* margin-right: 44%; */
-    /* margin-left: 11px; */
-    border: none;
-    background-color: #ffffff;
-    width: 5%;
-    margin-top: 53px;
-    height: 133px;
-    position: relative;
-    /* margin-bottom: -45px;**/
-}
-
-.btn-grafico-prox {
-    border-radius: 8px;
-    /* margin-left: 43%; */
-    border: none;
-    background-color: #fff;
-    width: 5%;
-    height: 134px;
-    position: relative;
-    /* margin-bottom: -49px; */
-    margin-top: 52px;
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
-    .container-card {
-        width: 100%;
-        /* Em telas menores, cada container-card ocupa toda a largura */
-    }
-
-    .card-custom {
-        width: 100% !important;
-    }
-
-    .container-grafico {
-        width: 100% !important;
-
-    }
-
-    .container-custom {
-        width: 100% !important;
-    }
-
-    .btn-menu-itens {
-        width: 48% !important;
-        justify-content: left;
-    }
-
-    .btn-calendario-container {
-        width: 100% !important;
-    }
-
-    .btn-calendario-container {
-        padding: 9px;
-    }
-
-    .btn-grafico-ant {
-        width: 10%;
-        margin-top: -2px;
-        height: 35px;
-        margin-right: -14px;
-        margin-left: -9px;
-    }
-
-    .btn-grafico-prox {
-        width: 9%;
-        height: 40px;
-        margin-top: -3px;
-        margin-left: -13px;
-    }
-}
-
-@media (max-width: 900px) {
-    .container {
-        width: 100%;
-    }
-
-    .card-custom {
-        width: 48%;
-    }
-
-    .container-grafico {
-        width: 93%;
-    }
-
-    .container-custom {
-        width: 93%;
-    }
-
-    .layout-menu {
-        width: 100%;
-    }
-
-    .menu-list {
-        width: 100%;
-    }
-
-    .btn-menu-itens {
-        width: 18%;
-    }
-
-    .btn-calendario-container {
-        width: 93%;
-    }
-
-    // .btn-grafico-ant{
-    //     margin-right: 43%;
-    //     margin-left: 0px;
-    // }
-}
-
-mat-card {
-    width: 100%;
-    background-color: #ffffff;
-    border: none;
-    color: #474747;
-}
-
-.cabecalho-image {
-    background-image: src("assets/img/ressaquinha.jpg");
-    background-size: cover;
-    max-width: 58px;
-    align-items: baseline;
-    border-radius: 5px;
-    display: flex;
-    width: 100%;
-}
-
-.img-custom {
-    width: 100%;
-}
-
-.card-subtitle {
-    font-size: 14px;
-}
-
-.card-title {
-    font-size: 15px;
-}
-
-.button-card {
-    width: 100%;
-    color: #4c4747;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    background: #ffffff;
-    border: none;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-//customização do rating
-::ng-deep .p-rating .p-rating-icon {
-    transition: color 0.3s ease, transform 0.3s ease;
-    /* Transição suave para cor e transform */
-}
-
-::ng-deep .p-rating .p-rating-item.p-rating-item-active .p-rating-icon {
-    color: #ffd700;
-    /* Cor dourada quando a estrela é preenchida */
-    transform: scale(1.2);
-    /* Aumenta o tamanho da estrela preenchida */
-}
-
-::ng-deep .p-rating .p-rating-icon.p-empty {
-    color: #cccccc;
-    /* Cor cinza para a estrela vazia */
-    transform: scale(1);
-    /* Normaliza o tamanho da estrela vazia */
-}
-
-.circle-container {
-    display: flex;
-    position: relative;
-    width: 100%;
-    align-items: center;
-    justify-content: center
-}
-
-.circle-background {
-    fill: none;
-    stroke: #f0f0f0;
-    stroke-width: 5;
-}
-
-.circle-progress {
-    fill: none;
-    stroke: #4caf50;
-    stroke-width: 5;
-    transform: rotate(-90deg);
-    transform-origin: 50% 50%;
-    transition: stroke-dashoffset 1s ease;
-    align-items: center;
-}
-
-.rating-value {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-}
-
-.bar-value {
-    font-size: 14px;
-    font-weight: 500;
-    text-align: right;
-}
-
-.rating-bar {
-    display: flex;
-    align-items: center;
-    margin-bottom: 6px;
-    justify-content: flex-start;
-    /* Alinha ao início */
-    width: 100%;
-    /* Garantir que o contêiner use 100% da largura */
-    flex-wrap: wrap;
-    /* Permite que os itens se movam para uma nova linha quando necessário */
-}
-
-/* Contêiner da barra de fundo */
-.bar-container {
-    background-color: #e0e0e0;
-    /* Cor de fundo da barra */
-    height: 12px;
-    /* Altura da barra */
-    border-radius: 5px;
-    position: relative;
-    flex-grow: 1;
-    /* Faz com que a barra ocupe todo o espaço restante */
-    overflow: hidden;
-    /* Garante que a barra não transborde */
-    width: 100%;
-}
-
-/* A barra de progresso (cor preenchida) */
-.bar {
-    background-color: #4caf50;
-    /* Cor da barra (verde) */
-    height: 100%;
-    border-radius: 5px;
-    transition: width 0.3s ease;
-    /* Animação suave */
-}
-
-/* Exibição do valor médio e votos ao lado da barra */
-.rating-bar span {
-    margin-left: 10px;
-    font-size: 14px;
-    color: #333;
-    white-space: nowrap;
-    /* Evita que o texto se quebre em várias linhas */
-    overflow: hidden;
-    /* Evita que o texto ultrapasse a área disponível */
-    text-overflow: ellipsis;
-    /* Adiciona '...' se o texto for longo demais */
-}
-
-/* Estilo do nome da categoria de rating */
-.rating-bar label {
-    font-weight: bold;
-    color: #333;
-    margin-right: 10px;
-    font-size: 14px;
-    flex-shrink: 0;
-    /* Impede que o nome da categoria encolha */
-    white-space: nowrap;
-    /* Impede que o nome quebre em várias linhas */
-}
-
-.rating-votes {
-    display: flex;
-    justify-content: center;
-    font-size: 0.9em;
-    color: #777;
-    margin: 0;
-}
-
-.rating-info {
-    text-align: center;
-    width: 100%;
-}
-
-.rating-container {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
-}
-
-.rating-distribution {
-    margin-top: 20px;
-    width: 100%;
+    padding: 0;
+    margin-bottom: 50px;
 }

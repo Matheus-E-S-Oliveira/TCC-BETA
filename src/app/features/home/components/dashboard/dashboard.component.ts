@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, PLATFORM_ID, Inject, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { MatTabsModule } from '@angular/material/tabs'
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
 
-import { MenuItem } from 'primeng/api';
 import { RatingModule } from 'primeng/rating';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { MenubarModule } from 'primeng/menubar';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { ChartModule } from 'primeng/chart';
 import { NgChartsModule } from 'ng2-charts';
-import { reverse } from 'node:dns';
+
 
 
 @Component({
@@ -31,240 +31,80 @@ import { reverse } from 'node:dns';
     CanvasJSAngularChartsModule,
     ChartModule,
     MenubarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatGridListModule
     // Outros módulos
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  items: MenuItem[] | undefined;
-  value = 1.4;
-  value1 = 0.2;
-  value2 = 2.5;
-  value3 = 1.0;
-  value4 = 2.0;
-  totalVotes = 1000;
-  isBrowser: boolean = false;
-  activeItem!: null;
- 
+
   currentMonthIndex: number = 0;
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object,
-    private cdRef: ChangeDetectorRef) { }
-
-  ratings = [
-    { category: 'Saude', average: 0.2 },
-    { category: 'Educação', average: 2.5 },
-    { category: 'Infraestrutura', average: 1.0 },
-    { category: 'Segurança', average: 2.0 },
-  ];
-
-  generalAverage: number = this.calculateGeneralAverage();
-
-  circumference: number = 2 * Math.PI * 45;
-  offset: number = this.circumference - (this.value / 5) * this.circumference;
-  screenWidth!: number;
   data: any;
   options: any;
-
-  calculateGeneralAverage(): number {
-    const total = this.ratings.reduce((acc, rating) => acc + rating.average, 0);
-    return total / this.ratings.length;
-  }
+  data1: any;
+  options1: any;
 
   avaliacao = [
     {
-      mes: 'Janeiro',
+      mes: 'Digitalização do Documentos',
       categorias: [
-        { nome: 'Saude', data: 4.0, backgroundColor: "rgba(138, 43, 226, 0.5)" },
-        { nome: 'Segurança', data: 4.2, backgroundColor: "rgba(0, 0, 255, 0.5)" },
-        { nome: 'Educação', data: 3.8, backgroundColor: "rgba(0, 255, 0, 0.5)" },
-        { nome: 'Infraestrutura', data: 4.5, backgroundColor: "rgba(255, 165, 0, 0.5)" }
+        { nome: 'Média de arquivos por caixa', data: 552, backgroundColor: "rgba(138, 43, 226, 0.5)" },
+        { nome: 'Média de folhas por caixa', data: 1104, backgroundColor: "rgba(0, 0, 255, 0.5)" },
+        { nome: 'Média de folhas por livro', data: 343, backgroundColor: "rgba(0, 255, 0, 0.5)" },
+        { nome: 'Média de páginas por livro', data: 687, backgroundColor: "rgba(255, 165, 0, 0.5)" }
       ]
+
     },
-    {
-      mes: 'Fevereiro',
-      categorias: [
-        { nome: 'Saude', data: 3.5, backgroundColor: "rgba(138, 43, 226, 0.5)" },
-        { nome: 'Segurança', data: 4.0, backgroundColor: "rgba(0, 0, 255, 0.5)" },
-        { nome: 'Educação', data: 4.2, backgroundColor: "rgba(0, 255, 0, 0.5)" },
-        { nome: 'Infraestrutura', data: 3.7, backgroundColor: "rgba(255, 165, 0, 0.5)" }
-      ]
-    },
-    {
-      mes: 'Março',
-      categorias: [
-        { nome: 'Saude', data: 4.1, backgroundColor: "rgba(138, 43, 226, 0.5)" },
-        { nome: 'Segurança', data: 4.4, backgroundColor: "rgba(0, 0, 255, 0.5)" },
-        { nome: 'Educação', data: 3.9, backgroundColor: "rgba(0, 255, 0, 0.5)" },
-        { nome: 'Infraestrutura', data: 4.3, backgroundColor: "rgba(255, 165, 0, 0.5)" }
-      ]
-    },
-    {
-      mes: 'Abril',
-      categorias: [
-        { nome: 'Saude', data: 3.1, backgroundColor: "rgba(138, 43, 226, 0.5)" },
-        { nome: 'Segurança', data: 2.4, backgroundColor: "rgba(0, 0, 255, 0.5)" },
-        { nome: 'Educação', data: 2.9, backgroundColor: "rgba(0, 255, 0, 0.5)" },
-        { nome: 'Infraestrutura', data: 1.3, backgroundColor: "rgba(255, 165, 0, 0.5)" }
-      ]
-    },
-    {
-      mes: 'Maio',
-      categorias: [
-        { nome: 'Saude', data: 1.1, backgroundColor: "rgba(138, 43, 226, 0.5)" },
-        { nome: 'Segurança', data: 4.4, backgroundColor: "rgba(0, 0, 255, 0.5)" },
-        { nome: 'Educação', data: 0.9, backgroundColor: "rgba(0, 255, 0, 0.5)" },
-        { nome: 'Infraestrutura', data: 2.3, backgroundColor: "rgba(255, 165, 0, 0.5)" }
-      ]
-    },
-    {
-      mes: 'Junho',
-      categorias: [
-        { nome: 'Saude', data: 4.1, backgroundColor: "rgba(138, 43, 226, 0.5)" },
-        { nome: 'Segurança', data: 4.4, backgroundColor: "rgba(0, 0, 255, 0.5)" },
-        { nome: 'Educação', data: 4.9, backgroundColor: "rgba(0, 255, 0, 0.5)" },
-        { nome: 'Infraestrutura', data: 4.3, backgroundColor: "rgba(255, 165, 0, 0.5)" }
-      ]
-    },
-    {
-      mes: 'Julho',
-      categorias: [
-        { nome: 'Saude', data: 1.1, backgroundColor: "rgba(138, 43, 226, 0.5)" },
-        { nome: 'Segurança', data: 1.4, backgroundColor: "rgba(0, 0, 255, 0.5)" },
-        { nome: 'Educação', data: 1.9, backgroundColor: "rgba(0, 255, 0, 0.5)" },
-        { nome: 'Infraestrutura', data: 1.3, backgroundColor: "rgba(255, 165, 0, 0.5)" }
-      ]
-    },
-    {
-      mes: 'Agosto',
-      categorias: [
-        { nome: 'Saude', data: 1.1, backgroundColor: "rgba(138, 43, 226, 0.5)" },
-        { nome: 'Segurança', data: 1.4, backgroundColor: "rgba(0, 0, 255, 0.5)" },
-        { nome: 'Educação', data: 1.9, backgroundColor: "rgba(0, 255, 0, 0.5)" },
-        { nome: 'Infraestrutura', data: 1.3, backgroundColor: "rgba(255, 165, 0, 0.5)" }
-      ]
-    },
-    {
-      mes: 'Setembro',
-      categorias: [
-        { nome: 'Saude', data: 1.1, backgroundColor: "rgba(138, 43, 226, 0.5)" },
-        { nome: 'Segurança', data: 1.4, backgroundColor: "rgba(0, 0, 255, 0.5)" },
-        { nome: 'Educação', data: 1.9, backgroundColor: "rgba(0, 255, 0, 0.5)" },
-        { nome: 'Infraestrutura', data: 1.3, backgroundColor: "rgba(255, 165, 0, 0.5)" }
-      ]
-    },
-    {
-      mes: 'Outubro',
-      categorias: [
-        { nome: 'Saude', data: 1.1, backgroundColor: "rgba(138, 43, 226, 0.5)" },
-        { nome: 'Segurança', data: 1.4, backgroundColor: "rgba(0, 0, 255, 0.5)" },
-        { nome: 'Educação', data: 1.9, backgroundColor: "rgba(0, 255, 0, 0.5)" },
-        { nome: 'Infraestrutura', data: 1.3, backgroundColor: "rgba(255, 165, 0, 0.5)" }
-      ]
-    }]
+  ]
 
   ngOnInit() {
-    if (typeof window !== 'undefined') {
-      this.screenWidth = window.innerWidth;
-      this.updateChartOptions();
-      this.updateChartData();
-      
-    }
-  }
-  updateChartData() {
-    
-    
-    const totalMonths = this.avaliacao.length;
-    let startIndex = Math.max(totalMonths - 6 - this.currentMonthIndex, 0);
-    const lastSixMonths = this.avaliacao.slice(startIndex, startIndex + 6);
-
-    const labels = this.avaliacao.map(mes => mes.mes);
-
-    const datasets = [];
-
-    const categorias = this.avaliacao[this.currentMonthIndex]?.categorias;
-
-    for (const categoria of categorias) {
-      const dataset = {
-        label: categoria.nome,
-        data: lastSixMonths.map(mes => {
-
-          if (this.screenWidth > 730) {
-            return mes.categorias.find(cat => cat.nome === categoria.nome)?.data || 0;
-          }
-          else {
-            this.avaliacao.reverse();
-            return this.avaliacao[this.currentMonthIndex]?.categorias.find(cat => cat.nome === categoria.nome)?.data || 0;
-          }
-        }),
-        backgroundColor: categoria.backgroundColor,
-
-      };
-      datasets.push(dataset);
-    }
-    const mediaGeralDataset = {
-      label: 'Média Geral',
-      data: lastSixMonths.map(mes => {
-        if (this.screenWidth > 730) {
-          const media = mes.categorias.reduce((acc, categoria) => acc + categoria.data, 0) / mes.categorias.length;
-          return media;
-        }
-        else {
-          this.avaliacao.reverse();
-          const mesAtual = this.avaliacao[this.currentMonthIndex];
-          if (mesAtual && mesAtual.categorias.length > 0) {
-            const media = mesAtual.categorias.reduce((acc, categoria) => acc + categoria.data, 0) / mesAtual.categorias.length;
-            return media;
-          } else {
-            return 0;
-          }
-        }
-      }),
-      borderColor: "rgba(255, 0, 0, 0.8)",
-      borderWidth: 3,
-      fill: false,
-      tension: 0.4,
-      type: 'line',
-      pointBackgroundColor: "rgba(150, 150, 150, 0,2)",
-      pointBorderColor: "rgba(150, 150, 150, 0.5)",
-    };
-    datasets.push(mediaGeralDataset);
-    const labelSmallScreen = labels;
-    const currentLabels = this.screenWidth <= 730 ? [labelSmallScreen.reverse()[this.currentMonthIndex]] : lastSixMonths.map(mes => mes.mes);
-
-    this.data = {
-      labels: currentLabels,
-      datasets: datasets
-    };
     this.updateChartOptions();
-    this.cdRef.detectChanges();
-  }
+    this.updateChartRc();
+    this.updateChartData();
 
-  updateChartOptions() {
-    if (this.screenWidth <= 730) {
-      this.initChartOptionsSmallScreen();  // Para telas pequenas
-    } else {
-      this.initChartOptionsLargeScreen();  // Para telas grandes
-    }
   }
+  updateChartRc() {
+    const value = [353, 38, 0];
+    const digitalizados = [
+      { nome: 'Total de caixas digitalizadas', data: 353, backgroundColor: 'rgba(0, 0, 255, 0.5)', hoverBackgroundColor: 'rgba(0, 0, 255, 0.7' },
+      { nome: 'Total de Livros digitalizados', data: 38, backgroundColor: 'rgba(255, 255, 0, 0.5)', hoverBackgroundColor: 'rgba(255, 255, 0, 0.7)' },
+      { nome: 'Total digitalizados', data: (353 + 38), backgroundColor: 'rgba(0, 255, 0, 0.2)', hoverBackgroundColor: 'rgba(0, 255, 0, 0.2)' }
+    ]
+    this.data1 = {
+      labels: ['Caixas Digitalizadas', 'Livros Digitalizados', 'Total digitalizados'],
+      datasets: [
+        {
+          data: value,
+          label: 'Itens Digitalizados',
+          backgroundColor: ['rgba(0, 0, 255, 0.5)', 'rgba(255, 255, 0, 0.5)', 'rgba(0, 255, 0, 0.2)'],
+          hoverBackgroundColor: ['rgba(0, 0, 255, 0.7)', 'rgba(255, 255, 0, 0.7)', 'rgba(0, 255, 0, 0.2)'],
+          borderWidth: [0]
+        },
+        {
+          data: [0, 0, 353 + 38],
+          label: 'Total de itens digitalizados',
+          backgroundColor: ['rgba(0, 255, 0, 0.2)'],
+          borderColor: ['rgba(0, 255, 0, 0.2)'],
+          borderWidth: [0]
+        }
+      ]  
+    };
 
-  initChartOptionsSmallScreen() {
-    this.options = {
-      maintainAspectRatio: false,
-      responsive: true,
-      aspectRatio: 1.3,
+
+    this.options1 = {
+      cutout: '50%',
       plugins: {
         title: {
           display: true,
-          text: 'Avaliação media dos serviços prestados',
+          text: 'Total de Caixa e Livros Digitalizados',
           font: {
             size: 14,
             weight: 'bold',
             family: 'Arial',
           },
-          color: 'rgba(130, 130, 130, 0.9)',
+          color: 'rgba(130, 130, 130, 1)',
           padding: {
             top: 5,
             bottom: 10,
@@ -274,41 +114,50 @@ export class DashboardComponent {
         },
         legend: {
           position: 'bottom',
-          align: 'start',
+          align: 'center',
           labels: {
             font: {
               family: 'Arial',
-              size: 12,
+              size: 11,
               weight: 'bold',
             },
             color: 'rgba(130, 130, 130, 0.9)'
           }
         }
-      },
-      scales: {
-        x: {
-          type: 'category',
-          ticks: {
-            color: "rgba(130, 130, 130, 0.9)",
-          },
-          grid: {
-            color: "rgba(211, 211, 211, 0.5)"
-          }
-        },
-        y: {
-          beginAtZero: true,
-          max: 5,
-          stepSize: 0.5,
-          ticks: {
-            color: "rgba(130, 130, 130, 0.9)"
-          },
-          grid: {
-            color: "rgba(211, 211, 211, 0.5)"
-          }
-        },
       }
     };
   }
+
+  updateChartData() {
+
+    const datasets = [];
+
+    const categorias = this.avaliacao[this.currentMonthIndex]?.categorias;
+
+    for (const categoria of categorias) {
+      const dataset = {
+        label: categoria.nome,
+        data: this.avaliacao.map(mes => {
+          return mes.categorias.find(cat => cat.nome === categoria.nome)?.data || 0;
+        }),
+        backgroundColor: categoria.backgroundColor,
+
+      };
+      datasets.push(dataset);
+    }
+    const currentLabels = this.avaliacao.map(mes => mes.mes);
+
+    this.data = {
+      labels: currentLabels,
+      datasets: datasets
+    };
+  }
+
+  updateChartOptions() {
+    this.initChartOptionsLargeScreen();
+  }
+
+
   initChartOptionsLargeScreen() {
     this.options = {
       maintainAspectRatio: false,
@@ -317,9 +166,9 @@ export class DashboardComponent {
       plugins: {
         title: {
           display: true,
-          text: 'Avaliação media dos serviços prestados',
+          text: 'Média de arquivos digitalizados',
           font: {
-            size: 14,
+            size: 16,
             weight: 'bold',
             family: 'Arial',
           },
@@ -356,7 +205,6 @@ export class DashboardComponent {
         },
         y: {
           beginAtZero: true,
-          max: 5,
           stepSize: 0.5,
           ticks: {
             color: "rgba(130, 130, 130, 0.9)"
@@ -367,27 +215,5 @@ export class DashboardComponent {
         }
       }
     };
-  }
-  nextMonth() {
-    const totalMonths = this.avaliacao.length;
-    if (this.currentMonthIndex > 0) {
-        this.currentMonthIndex--;
-        this.updateChartData(); 
-    }
-}
-
-prevMonth() {
-  const totalMonths = this.avaliacao.length; 
-  if (this.currentMonthIndex < totalMonths - 1) {
-      this.currentMonthIndex++;
-      this.updateChartData();
-  }
-}
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    this.screenWidth = window.innerWidth;
-    this.updateChartOptions();
-    this.updateChartData();
   }
 }

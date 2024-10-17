@@ -95,6 +95,7 @@ export class DashboardComponent {
 
     this.options1 = {
       cutout: '50%',
+      responsive: true,
       plugins: {
         title: {
           display: true,

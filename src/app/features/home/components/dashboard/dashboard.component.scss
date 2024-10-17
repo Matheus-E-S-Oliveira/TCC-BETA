@@ -6,17 +6,25 @@
     align-items: center;
 }
 
+.container-painel{
+    width: 83%;
+    display: flex;
+}
 .container-grafico-doun {
-    width: 35%;
+    width: 100%;
+    padding: 20px;
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-right: 20px;
+    
 }
 
 .container-grafico {
     padding: 20px;
     width: 80%;
     background: #ffffff;
+    margin-top: 50px;
     margin-bottom: 12px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
@@ -32,32 +40,52 @@
     margin-right: 20px;
 
 }
-
-.text-caixa {
-    margin-bottom: 20px;
+.container {
+    width: 80%;
+    display: flex;
+    padding: 0;
+    margin-bottom: 12px;
 }
-
-.text-caixa,
-.text-livro {
-    width: 99%;
-    margin-left: 10px;
+.painel{
+    display: flex;
+    justify-content: flex-start;
+    height: 28px;
+    margin-top: 7px;
+    position: relative;
+}
+.painel-expand{
     background-color: #ffffff;
-    flex: 1;
-    padding: 20px;
+    padding: 14px;
+    margin-top: 15px;
     box-sizing: border-box;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    // background-color: #ffffff;
+    // padding: 14px;
+    // margin-top: -21px;
+    // box-sizing: border-box;
+    // border-radius: 12px;
+    // box-shadow: 0 10px 7px rgba(0, 0, 0, 0.2);
+}
+
+.btn-painel{
+    background: none;
+    // border: outset;
+    border: dashed;
+    color: whitesmoke;
+    border-radius: 15px;
+    height: 30px;
+    margin-top: 7px;
+    width: 100%;
     display: flex;
-    justify-content: left;
-    align-items: center;
-    flex-wrap: wrap;
+    justify-content: end;
 }
 .text-title{
     display: flex;
     justify-content: flex-start;
     width: 100%;
     align-items: center;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     color: rgb(130, 130, 130);
     font-family: sans-serif;
@@ -69,25 +97,9 @@
     justify-content: flex-start;
     padding: 3px;
     color: rgba(130, 130, 130, 1);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
 }
 span {
     width: 100%;
-}
-
-.card {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background: none;
-    border: none;
-    margin-left: 20px;
-}
-
-.container {
-    width: 80%;
-    display: flex;
-    padding: 0;
-    margin-bottom: 50px;
 }

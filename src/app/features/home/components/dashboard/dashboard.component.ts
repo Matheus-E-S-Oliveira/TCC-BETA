@@ -3,13 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatGridListModule } from '@angular/material/grid-list';
 
-import { RatingModule } from 'primeng/rating';
-import { TabMenuModule } from 'primeng/tabmenu';
-import { MenubarModule } from 'primeng/menubar';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { ChartModule } from 'primeng/chart';
 import { NgChartsModule } from 'ng2-charts';
@@ -21,18 +15,13 @@ import { NgChartsModule } from 'ng2-charts';
   standalone: true,
   imports: [
     NgChartsModule,  // Certifique-se de que NgChartsModule está aqui
-    MatCardModule,
-    TabMenuModule,
-    RatingModule,
     FormsModule,
     CommonModule,
     MatButtonModule,
     MatIconModule,
     CanvasJSAngularChartsModule,
     ChartModule,
-    MenubarModule,
-    MatTabsModule,
-    MatGridListModule
+    MatIconModule
     // Outros módulos
   ],
   templateUrl: './dashboard.component.html',
@@ -45,6 +34,10 @@ export class DashboardComponent {
   options: any;
   data1: any;
   options1: any;
+  data2: any;
+  options2: any;
+  data3: any;
+  options3: any;
 
   avaliacao = [
     {
@@ -58,14 +51,29 @@ export class DashboardComponent {
 
     },
   ]
+  isVisible = false;
+  isVisible2 = false;
+  isVisible3 = false;
+
+  toggleVisibility(graphNumber: number) {
+    if (graphNumber === 1) {
+      this.isVisible = !this.isVisible;
+    } else if (graphNumber === 2) {
+      this.isVisible2 = !this.isVisible2;
+    } else if (graphNumber === 3) {
+      this.isVisible3 = !this.isVisible3;
+    }
+  }
 
   ngOnInit() {
     this.updateChartOptions();
-    this.updateChartRc();
+    this.updateChartRcI();
+    this.updateChartRcA();
+    this.updateChartRcF();
     this.updateChartData();
 
   }
-  updateChartRc() {
+  updateChartRcI() {
     const value = [353, 38, 0];
     const digitalizados = [
       { nome: 'Total de caixas digitalizadas', data: 353, backgroundColor: 'rgba(0, 0, 255, 0.5)', hoverBackgroundColor: 'rgba(0, 0, 255, 0.7' },
@@ -85,8 +93,8 @@ export class DashboardComponent {
         {
           data: [0, 0, 353 + 38],
           label: 'Total de itens digitalizados',
-          backgroundColor: ['rgba(0, 255, 0, 0.2)'],
-          borderColor: ['rgba(0, 255, 0, 0.2)'],
+          backgroundColor: ['rgba(0, 255, 0, 0.1)'],
+          borderColor: ['rgba(0, 255, 0, 0.1)'],
           borderWidth: [0]
         }
       ]  
@@ -95,6 +103,7 @@ export class DashboardComponent {
 
     this.options1 = {
       cutout: '50%',
+      responsive: true,
       plugins: {
         title: {
           display: true,
@@ -114,7 +123,123 @@ export class DashboardComponent {
         },
         legend: {
           position: 'bottom',
+          align: 'start',
+          labels: {
+            font: {
+              family: 'Arial',
+              size: 11,
+              weight: 'bold',
+            },
+            color: 'rgba(130, 130, 130, 0.9)'
+          }
+        }
+      }
+    };
+  }
+  updateChartRcA() {
+    const value = [31257, 2612, 0];
+    this.data2 = {
+      labels: ['Média de itens nas caixas', 'Media de itens nos livros', 'Total de digitalizados'],
+      datasets: [
+        {
+          data: value,
+          label: 'Itens Digitalizados',
+          backgroundColor: ['rgba(255, 0, 0, 0.5)', 'rgba(169, 169, 169, 0.5)',  'rgba(0, 255, 0, 0.1)'],
+          hoverBackgroundColor: ['rgba(255, 0, 0, 0.7)', 'rgba(169, 169, 169, 0.7)', 'rgba(0, 255, 0, 0.1)'],
+          borderWidth: [0]
+        },
+        {
+          data: [0, 0, 31257 + 2612],
+          label: 'Total de itens digitalizados',
+          backgroundColor: ['rgba(0, 255, 0, 0.1)'],
+          borderColor: ['rgba(0, 255, 0, 0.1)'],
+          borderWidth: [0]
+        }
+      ]  
+    };
+
+
+    this.options2 = {
+      cutout: '50%',
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Total de itens digitalizados',
+          font: {
+            size: 14,
+            weight: 'bold',
+            family: 'Arial',
+          },
+          color: 'rgba(130, 130, 130, 1)',
+          padding: {
+            top: 5,
+            bottom: 10,
+          },
           align: 'center',
+          position: 'top',
+        },
+        legend: {
+          position: 'bottom',
+          align: 'start',
+          labels: {
+            font: {
+              family: 'Arial',
+              size: 11,
+              weight: 'bold',
+            },
+            color: 'rgba(130, 130, 130, 0.9)'
+          }
+        }
+      }
+    };
+  }
+  updateChartRcF() {
+    const value = [389712, 26125, 0];
+    this.data3 = {
+      labels: ['Arquivos Digitalizadas', 'Livros Digitalizados', 'Total digitalizados'],
+      datasets: [
+        {
+          data: value,
+          label: 'Itens Digitalizados',
+          backgroundColor: ['rgba(128, 0, 128, 0.5)', 'rgba(255, 165, 0, 0.5)', 'rgba(0, 255, 0, 0.2)'],
+          hoverBackgroundColor: ['rgba(128, 0, 128, 0.7)', 'rgba(255, 165, 0, 0.7)', 'rgba(0, 255, 0, 0.2)'],
+          borderWidth: [0]
+        },
+        {
+          data: [0, 0, 389712 + 26125],
+          label: 'Total de itens digitalizados',
+          backgroundColor: ['rgba(0, 255, 0, 0.1)'],
+          borderColor: ['rgba(0, 255, 0, 0.1)'],
+          borderWidth: [0]
+        }
+      ]  
+    };
+
+
+    this.options3 = {
+      cutout: '50%',
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Total de Arquivos e Páginas digitalizados',
+          font: {
+            size: 14,
+            weight: 'bold',
+            family: 'Arial',
+          },
+          color: 'rgba(130, 130, 130, 1)',
+          padding: {
+            top: 5,
+            bottom: 10,
+          },
+          align: 'center',
+          position: 'top',
+        },
+        legend: {
+          position: 'bottom',
+          align: 'start',
           labels: {
             font: {
               family: 'Arial',
@@ -166,7 +291,7 @@ export class DashboardComponent {
       plugins: {
         title: {
           display: true,
-          text: 'Média de arquivos digitalizados',
+          text: 'Média de arquivos digitalizados por Caixa/Livro',
           font: {
             size: 16,
             weight: 'bold',
@@ -215,5 +340,12 @@ export class DashboardComponent {
         }
       }
     };
+  }
+  applyZoom(element: HTMLElement) {
+    let currentScale = element.style.transform ? parseFloat(element.style.transform.replace('scale(', '').replace(')', '')) : 1;
+    const newScale = currentScale === 1 ? 1.2 : 1;  // Alterna entre zoom in (1.2) e zoom out (1)
+
+    element.style.transition = 'transform 0.3s ease'; // Adiciona transição suave
+    element.style.transform = `scale(${newScale})`; // Aplica a transformação de zoom
   }
 }

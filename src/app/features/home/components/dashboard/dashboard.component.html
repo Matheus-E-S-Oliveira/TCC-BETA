@@ -1,24 +1,66 @@
 <div class="body">
     <div class="container">
-        <div class="container-grafico-doun">
-            <div class="grafico-doun">
-                <p-chart type="doughnut" [data]="data1" [options]="options1"></p-chart>
+        <div class="col-4">
+            <div class="container-grafico-doun" #grafico1>
+                <div class="grafico-doun">
+                    <p-chart type="doughnut" [data]="data1" [options]="options1" (click)="applyZoom(grafico1)"></p-chart>
+                </div>
+                <div class="painel">
+                    <button class="btn-painel" (click)="toggleVisibility(1)">
+                        <mat-icon>{{ isVisible ? 'expand_less' : 'expand_more' }}</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="isVisible" class="painel-expand">
+                <div class="text-livro">
+                    <span class="text-title">Caixas e Livros digitalizados:</span>
+                    <span class="text-content">Livros digitalizados: 38 - 9.72%</span>
+                    <span class="text-content">Caixas digitalizadas: 353 - 90.28%</span>
+                    <span class="text-content">Total digitalizados: 391 - 100% </span>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="text-caixa">
-                <span class="text-title">Caixas digitalizadas:</span>
-                <span class="text-content">Média total de itens digitalizados: 31.257 itens</span>
-                <span class="text-content">Média total de arquivos digitalizados: 389.712 arquivos</span>
+        <div class="col-4">
+            <div class="container-grafico-doun" #grafico2>
+                <div class="grafico-doun">
+                    <p-chart type="doughnut" [data]="data2" [options]="options2" (click)="applyZoom(grafico2)></p-chart>
+                </div>
+                <div class="painel">
+                    <button class="btn-painel" (click)="toggleVisibility(2)">
+                        <mat-icon>{{ isVisible2 ? 'expand_less' : 'expand_more' }}</mat-icon>
+                    </button>
+                </div>
             </div>
-            <div class="text-livro">
-                <span class="text-title">Livros digitalizadas:</span>
-                <span class="text-content">Média total de itens digitalizados: 2.612 itens</span>
-                <span class="text-content">Média total de páginas digitalizadas: 26.125 páginas</span>
+            <div *ngIf="isVisible2" class="painel-expand">
+                <div class="text-livro">
+                    <span class="text-title">Ítens digitalizadas:</span>
+                    <span class="text-content">Itens nos livros digitalizados: 2.612 - 7.71%</span>
+                    <span class="text-content">Intes nas caixas digitalizadas: 31.257 - 92.29%</span>
+                    <span class="text-content">Total digitalizados: 33.869 - 100%</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="container-grafico-doun" >
+                <div class="grafico-doun">
+                    <p-chart type="doughnut" [data]="data3" [options]="options3" (click)="applyZoom(grafico1)></p-chart>
+                </div>
+                <div class="painel">
+                    <button class="btn-painel" (click)="toggleVisibility(3)">
+                        <mat-icon>{{ isVisible3 ? 'expand_less' : 'expand_more' }}</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="isVisible3" class="painel-expand">
+                <div class="text-livro">
+                    <span class="text-title">Arquivos e Páginas digitalizadas:</span>
+                    <span class="text-content">Páginas digitalizadas: 26.125 - 6.28%</span>
+                    <span class="text-content">Arquivos digitalizadas: 389.712 - 93.72%</span>
+                    <span class="text-content">Total digitalizadas: 415.837 - 100%</span>
+                </div>
             </div>
         </div>
     </div>
-
     <div class="container-grafico">
         <div class="container-grafico-bar">
             <p-chart class="grafico" type="bar" [data]="data" [options]="options"></p-chart>

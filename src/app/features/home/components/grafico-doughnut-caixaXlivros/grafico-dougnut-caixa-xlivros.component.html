@@ -1,0 +1,27 @@
+<div class="col-4" #grafico1>
+    <div class="container-grafico-doun">
+        <div class="grafico-doun">
+            <p-chart 
+                type="doughnut" 
+                [data]="data"
+                [options]="options"
+                width="100%"
+                heigth="100%"
+                (click)="applyZoom(grafico1)">
+            </p-chart>
+        </div>
+        <div class="painel">
+            <button class="btn-painel" (click)="toggleVisibility(1)">
+                <mat-icon>{{ isVisible ? 'expand_less' : 'expand_more' }}</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="isVisible" class="painel-expand">
+        <div class="text-livro">
+            <span class="text-title">Caixas e Livros digitalizados:</span>
+            <span class="text-content">Livros digitalizados: 38 - 9.72%</span>
+            <span class="text-content">Caixas digitalizadas: 353 - 90.28%</span>
+            <span class="text-content">Total digitalizados: 391 - 100% </span>
+        </div>
+    </div>
+</div>

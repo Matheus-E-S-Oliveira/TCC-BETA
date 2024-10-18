@@ -1,9 +1,16 @@
 <div class="body">
     <div class="container">
-        <div class="col-4">
-            <div class="container-grafico-doun" #grafico1>
+        <div class="col-4" #grafico1>
+            <div class="container-grafico-doun">
                 <div class="grafico-doun">
-                    <p-chart type="doughnut" [data]="data1" [options]="options1" (click)="applyZoom(grafico1)"></p-chart>
+                    <p-chart 
+                        type="doughnut" 
+                        [data]="data1"
+                        [options]="options1"
+                        width="100%"
+                        heigth="100%"
+                        (click)="applyZoom(grafico1)">
+                    </p-chart>
                 </div>
                 <div class="painel">
                     <button class="btn-painel" (click)="toggleVisibility(1)">
@@ -20,10 +27,17 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="container-grafico-doun" #grafico2>
+        <div class="col-4" #grafico2>
+            <div class="container-grafico-doun">
                 <div class="grafico-doun">
-                    <p-chart type="doughnut" [data]="data2" [options]="options2" (click)="applyZoom(grafico2)></p-chart>
+                    <p-chart 
+                        type="doughnut" 
+                        [data]="data2" 
+                        [options]="options2" 
+                        width="100%" 
+                        heigth="100%"
+                        (click)="applyZoom(grafico2)">
+                    </p-chart>
                 </div>
                 <div class="painel">
                     <button class="btn-painel" (click)="toggleVisibility(2)">
@@ -40,10 +54,16 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="container-grafico-doun" >
+        <div class="col-4" #grafico3>
+            <div class="container-grafico-doun">
                 <div class="grafico-doun">
-                    <p-chart type="doughnut" [data]="data3" [options]="options3" (click)="applyZoom(grafico1)></p-chart>
+                    <p-chart 
+                        type="doughnut" 
+                        [data]="data3" 
+                        [options]="options3" 
+                        width="100%" 
+                        heigth="100%"
+                        (click)="applyZoom(grafico3)"></p-chart>
                 </div>
                 <div class="painel">
                     <button class="btn-painel" (click)="toggleVisibility(3)">

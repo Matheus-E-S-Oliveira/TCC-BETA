@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { GraficoBarComponent } from './grafico-bar.component';
+
+describe('GraficoBarComponent', () => {
+  let component: GraficoBarComponent;
+  let fixture: ComponentFixture<GraficoBarComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [GraficoBarComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(GraficoBarComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

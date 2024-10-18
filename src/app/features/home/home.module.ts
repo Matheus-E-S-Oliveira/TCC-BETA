@@ -9,12 +9,14 @@ import { TabMenuModule} from 'primeng/tabmenu';
 import { RatingModule } from 'primeng/rating';
 import { AppModule } from '../../app.module';
 import { NgChartsModule } from 'ng2-charts';
+import { GraficoDougnutCaixaXLivrosComponent } from './components/grafico-doughnut-caixaXlivros/grafico-dougnut-caixa-xlivros.component';
 
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    GraficoDougnutCaixaXLivrosComponent
   ],
   imports: [
     CommonModule,

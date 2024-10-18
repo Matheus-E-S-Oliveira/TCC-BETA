@@ -97,7 +97,7 @@ export class DashboardComponent {
           borderColor: ['rgba(0, 255, 0, 0.1)'],
           borderWidth: [0]
         }
-      ]  
+      ]
     };
 
 
@@ -123,7 +123,7 @@ export class DashboardComponent {
         },
         legend: {
           position: 'bottom',
-          align: 'start',
+          align: 'center',
           labels: {
             font: {
               family: 'Arial',
@@ -144,7 +144,7 @@ export class DashboardComponent {
         {
           data: value,
           label: 'Itens Digitalizados',
-          backgroundColor: ['rgba(255, 0, 0, 0.5)', 'rgba(169, 169, 169, 0.5)',  'rgba(0, 255, 0, 0.1)'],
+          backgroundColor: ['rgba(255, 0, 0, 0.5)', 'rgba(169, 169, 169, 0.5)', 'rgba(0, 255, 0, 0.1)'],
           hoverBackgroundColor: ['rgba(255, 0, 0, 0.7)', 'rgba(169, 169, 169, 0.7)', 'rgba(0, 255, 0, 0.1)'],
           borderWidth: [0]
         },
@@ -155,7 +155,7 @@ export class DashboardComponent {
           borderColor: ['rgba(0, 255, 0, 0.1)'],
           borderWidth: [0]
         }
-      ]  
+      ]
     };
 
 
@@ -181,7 +181,7 @@ export class DashboardComponent {
         },
         legend: {
           position: 'bottom',
-          align: 'start',
+          align: 'center',
           labels: {
             font: {
               family: 'Arial',
@@ -197,7 +197,7 @@ export class DashboardComponent {
   updateChartRcF() {
     const value = [389712, 26125, 0];
     this.data3 = {
-      labels: ['Arquivos Digitalizadas', 'Livros Digitalizados', 'Total digitalizados'],
+      labels: ['Arquivos Digitalizadas', 'Páginas Digitalizados', 'Total digitalizados'],
       datasets: [
         {
           data: value,
@@ -213,7 +213,7 @@ export class DashboardComponent {
           borderColor: ['rgba(0, 255, 0, 0.1)'],
           borderWidth: [0]
         }
-      ]  
+      ]
     };
 
 
@@ -239,7 +239,7 @@ export class DashboardComponent {
         },
         legend: {
           position: 'bottom',
-          align: 'start',
+          align: 'center',
           labels: {
             font: {
               family: 'Arial',
@@ -342,10 +342,15 @@ export class DashboardComponent {
     };
   }
   applyZoom(element: HTMLElement) {
-    let currentScale = element.style.transform ? parseFloat(element.style.transform.replace('scale(', '').replace(')', '')) : 1;
-    const newScale = currentScale === 1 ? 1.2 : 1;  // Alterna entre zoom in (1.2) e zoom out (1)
 
-    element.style.transition = 'transform 0.3s ease'; // Adiciona transição suave
-    element.style.transform = `scale(${newScale})`; // Aplica a transformação de zoom
+    const currentWidth = element.style.width ? parseFloat(element.style.width.replace('%', '')) : 33.3333; 
+
+    const newWidth = currentWidth === 33.3333 ? 60.3333 : 33.3333;
+
+
+         
+    element.style.transition = 'width 1s ease-in-out 0.1s';
+    element.style.width = `${newWidth}%`;
   }
+  
 }
